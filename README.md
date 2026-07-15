@@ -29,5 +29,26 @@ Follow these steps to get the application running locally on your machine:
 ### Prerequisite: MySQL Setup
 1. Open your MySQL client (Terminal or MySQL Workbench).
 2. Create the project database:
-   ```sql
+   sql
    CREATE DATABASE personal_finance_db;
+
+   git clone [https://github.com/YOUR_USERNAME/personal-finance-tracker.git](https://github.com/YOUR_USERNAME/personal-finance-tracker.git)
+cd personal-finance-tracker
+
+# Create and activate virtual environment
+python -m venv venv
+# On Windows:
+venv\Scripts\activate
+# On macOS/Linux:
+source venv/bin/activate
+
+pip install Flask flask-sqlalchemy pymysql cryptography python-dotenv
+
+db_user = 'root'
+db_password = 'YourMySQLPassword'  # Leave blank '' if no password is set
+db_host = 'localhost'
+db_name = 'personal_finance_db'
+
+python -c "from app import app, db; app.app_context().push(); db.create_all()"
+
+python app.py
